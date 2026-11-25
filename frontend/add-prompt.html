@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add New Prompt &mdash; PromptVault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo" aria-label="PromptVault Home">
+        <span class="logo-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="3" />
+            <path d="M8 10l3 2-3 2" />
+            <path d="M13 14h3" />
+          </svg>
+        </span>
+        <span class="logo-text">Prompt<span>Vault</span></span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#categories" class="nav-link">Categories</a>
+        <a href="index.html#featured" class="nav-link">Featured</a>
+        <a href="favorites.html" class="nav-link">Favorites</a>
+        <a href="add-prompt.html" class="btn btn-primary btn-sm">+ Add Prompt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="detail-main">
+    <div class="container detail-container">
+      <div class="detail-topbar">
+        <a href="index.html" class="btn btn-secondary btn-sm back-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5" />
+            <path d="M12 19l-7-7 7-7" />
+          </svg>
+          Back to Homepage
+        </a>
+      </div>
+
+      <section class="form-card">
+        <div class="form-header">
+          <h1 class="section-title">Add New Prompt</h1>
+          <p class="section-subtitle">
+            Save a new AI prompt with its category, compatible tool, and prompt type.
+          </p>
+        </div>
+
+        <!-- Success / Error Alert Box -->
+        <div class="form-alert" id="formAlert" role="alert" hidden></div>
+
+        <form id="addPromptForm" class="prompt-form" novalidate>
+          <!-- Title -->
+          <div class="form-group">
+            <label for="promptTitle" class="form-label">
+              Prompt Title <span class="required-star">*</span>
+            </label>
+            <input
+              type="text"
+              id="promptTitle"
+              name="title"
+              class="form-control"
+              maxlength="200"
+              placeholder="e.g., Python Code Refactoring Assistant"
+              required
+            />
+          </div>
+
+          <!-- Category, AI Tool, Prompt Type Row -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="promptCategory" class="form-label">
+                Category <span class="required-star">*</span>
+              </label>
+              <select id="promptCategory" name="category" class="form-control" required>
+                <option value="">Select a category...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="promptTool" class="form-label">
+                AI Tool <span class="required-star">*</span>
+              </label>
+              <select id="promptTool" name="ai_tool" class="form-control" required>
+                <option value="Any">Any</option>
+                <option value="ChatGPT">ChatGPT</option>
+                <option value="Claude">Claude</option>
+                <option value="Gemini">Gemini</option>
+                <option value="GitHub Copilot">GitHub Copilot</option>
+                <option value="Midjourney">Midjourney</option>
+                <option value="DALL-E">DALL-E</option>
+                <option value="Stable Diffusion">Stable Diffusion</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="promptType" class="form-label">
+                Prompt Type <span class="required-star">*</span>
+              </label>
+              <select id="promptType" name="prompt_type" class="form-control" required>
+                <option value="Text">Text</option>
+                <option value="Code">Code</option>
+                <option value="Debug">Debug</option>
+                <option value="System">System</option>
+                <option value="Workflow">Workflow</option>
+                <option value="Image">Image</option>
+                <option value="Study">Study</option>
+                <option value="Copywriting">Copywriting</option>
+                <option value="Career">Career</option>
+                <option value="Social">Social</option>
+                <option value="Productivity">Productivity</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Prompt Content -->
+          <div class="form-group">
+            <label for="promptContent" class="form-label">
+              Prompt Content <span class="required-star">*</span>
+            </label>
+            <textarea
+              id="promptContent"
+              name="content"
+              class="form-control form-textarea"
+              rows="7"
+              placeholder="Write the full prompt here. Use [PLACEHOLDERS] for parts users should customize..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <a href="index.html" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Submit Prompt</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">PromptVault &mdash; Personal AI Prompt Management System</p>
+      <p class="footer-note">Built with HTML, CSS, JavaScript, Flask &amp; MySQL</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/add-prompt.js"></script>
+</body>
+</html>

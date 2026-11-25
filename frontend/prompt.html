@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Details &mdash; PromptVault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo" aria-label="PromptVault Home">
+        <span class="logo-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="3" />
+            <path d="M8 10l3 2-3 2" />
+            <path d="M13 14h3" />
+          </svg>
+        </span>
+        <span class="logo-text">Prompt<span>Vault</span></span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#categories" class="nav-link">Categories</a>
+        <a href="index.html#featured" class="nav-link">Featured</a>
+        <a href="favorites.html" class="nav-link">Favorites</a>
+        <a href="add-prompt.html" class="btn btn-primary btn-sm">+ Add Prompt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="detail-main">
+    <div class="container detail-container">
+      <!-- Back Button -->
+      <div class="detail-topbar">
+        <a href="index.html" class="btn btn-secondary btn-sm back-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5" />
+            <path d="M12 19l-7-7 7-7" />
+          </svg>
+          Back to Homepage
+        </a>
+      </div>
+
+      <!-- Prompt Details Card -->
+      <article class="detail-card" id="detailCard">
+        <div class="detail-badges">
+          <span class="tag-badge" id="detailCategory">Category</span>
+          <span class="tool-badge" id="detailTool">AI Tool</span>
+          <span class="type-badge" id="detailType">Prompt Type</span>
+        </div>
+
+        <h1 class="detail-title" id="detailTitle">Loading prompt...</h1>
+
+        <div class="detail-content-header">
+          <span class="detail-label">Complete Prompt</span>
+          <div class="detail-actions">
+            <button type="button" class="btn btn-secondary btn-sm fav-toggle-btn" id="favPromptBtn">
+              &#9734; Add to Favorites
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="editPromptBtn">
+              Edit
+            </button>
+            <button type="button" class="btn btn-danger-outline btn-sm" id="deletePromptBtn">
+              Delete
+            </button>
+            <button type="button" class="btn btn-primary btn-sm copy-btn" id="copyPromptBtn">
+              Copy Prompt
+            </button>
+          </div>
+        </div>
+
+        <pre class="detail-content" id="detailContent"></pre>
+
+        <div class="detail-tags" id="detailTags" hidden></div>
+
+        <p class="detail-tip">
+          Tip: Replace bracketed placeholders like <code>[LANGUAGE]</code> or <code>[TOPIC]</code>
+          with your own details before running the prompt.
+        </p>
+      </article>
+
+      <!-- Inline Edit Prompt Form -->
+      <section class="form-card edit-card" id="editFormCard" hidden>
+        <div class="form-header">
+          <h2 class="section-title">Edit Prompt</h2>
+          <p class="section-subtitle">Update the prompt details and save your changes.</p>
+        </div>
+
+        <div class="form-alert" id="editAlert" role="alert" hidden></div>
+
+        <form id="editPromptForm" class="prompt-form" novalidate>
+          <div class="form-group">
+            <label for="editTitle" class="form-label">
+              Prompt Title <span class="required-star">*</span>
+            </label>
+            <input type="text" id="editTitle" class="form-control" maxlength="200" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editCategory" class="form-label">
+                Category <span class="required-star">*</span>
+              </label>
+              <select id="editCategory" class="form-control" required></select>
+            </div>
+
+            <div class="form-group">
+              <label for="editTool" class="form-label">
+                AI Tool <span class="required-star">*</span>
+              </label>
+              <select id="editTool" class="form-control" required>
+                <option value="Any">Any</option>
+                <option value="ChatGPT">ChatGPT</option>
+                <option value="Claude">Claude</option>
+                <option value="Gemini">Gemini</option>
+                <option value="GitHub Copilot">GitHub Copilot</option>
+                <option value="Midjourney">Midjourney</option>
+                <option value="DALL-E">DALL-E</option>
+                <option value="Stable Diffusion">Stable Diffusion</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="editType" class="form-label">
+                Prompt Type <span class="required-star">*</span>
+              </label>
+              <select id="editType" class="form-control" required>
+                <option value="Text">Text</option>
+                <option value="Code">Code</option>
+                <option value="Debug">Debug</option>
+                <option value="System">System</option>
+                <option value="Workflow">Workflow</option>
+                <option value="Image">Image</option>
+                <option value="Study">Study</option>
+                <option value="Copywriting">Copywriting</option>
+                <option value="Career">Career</option>
+                <option value="Social">Social</option>
+                <option value="Productivity">Productivity</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editContent" class="form-label">
+              Prompt Content <span class="required-star">*</span>
+            </label>
+            <textarea id="editContent" class="form-control form-textarea" rows="7" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="saveEditBtn">Save Changes</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Not Found Fallback -->
+      <div class="empty-state" id="notFoundState" hidden>
+        <h2>Prompt Not Found</h2>
+        <p>The requested prompt could not be found.</p>
+        <a href="index.html" class="btn btn-primary btn-sm">Return to Homepage</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">PromptVault &mdash; Personal AI Prompt Management System</p>
+      <p class="footer-note">Built with HTML, CSS, JavaScript, Flask &amp; MySQL</p>
+    </div>
+  </footer>
+
+  <!-- Copy Notification Toast -->
+  <div class="toast" id="copyToast" role="status" aria-live="polite">
+    Prompt copied to clipboard!
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/prompt.js"></script>
+</body>
+</html>

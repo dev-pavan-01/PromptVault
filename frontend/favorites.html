@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favorites &mdash; PromptVault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo" aria-label="PromptVault Home">
+        <span class="logo-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="3" />
+            <path d="M8 10l3 2-3 2" />
+            <path d="M13 14h3" />
+          </svg>
+        </span>
+        <span class="logo-text">Prompt<span>Vault</span></span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#categories" class="nav-link">Categories</a>
+        <a href="index.html#featured" class="nav-link">Featured</a>
+        <a href="favorites.html" class="nav-link active">Favorites</a>
+        <a href="add-prompt.html" class="btn btn-primary btn-sm">+ Add Prompt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="detail-main">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h1 class="section-title">Your Favorite Prompts</h1>
+          <p class="section-subtitle">
+            Quick access to the prompts you saved for repeated use.
+          </p>
+        </div>
+        <span class="results-count" id="favoritesCount">0 favorites</span>
+      </div>
+
+      <!-- Favorites Card Grid -->
+      <div class="prompts-grid" id="favoritesGrid">
+        <!-- Populated dynamically by js/favorites.js -->
+      </div>
+
+      <!-- Friendly Empty State -->
+      <div class="empty-state" id="favoritesEmpty" hidden>
+        <div class="empty-icon" aria-hidden="true">&#9734;</div>
+        <h2>No Favorites Yet</h2>
+        <p>You haven't saved any prompts to your favorites, or you removed them all.</p>
+        <div class="empty-actions">
+          <a href="index.html#featured" class="btn btn-primary btn-sm">Browse Prompts</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">PromptVault &mdash; Personal AI Prompt Management System</p>
+      <p class="footer-note">Built with HTML, CSS, JavaScript, Flask &amp; MySQL</p>
+    </div>
+  </footer>
+
+  <!-- Action Notification Toast -->
+  <div class="toast" id="favToast" role="status" aria-live="polite">
+    Removed from favorites.
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/favorites.js"></script>
+</body>
+</html>
