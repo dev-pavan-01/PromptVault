@@ -136,6 +136,8 @@ You need **two terminals**: one for the Flask backend and one for the frontend s
   ```bash
   source venv/Scripts/activate
   python app.py
+  (or) 
+  backend/venv/Scripts/python.exe backend/app.py
   ```
 - **PowerShell (from project root `d:\promptvault`):**
   ```powershell
